@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - EduLearn</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>EduLearn</h1>
+            <p class="tagline">Student Registration</p>
+        </header>
+
+        <main class="register-content">
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                    <span class="error" id="nameError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="mobile">Mobile Number</label>
+                    <input type="tel" id="mobile" name="mobile" placeholder="10 digits" required>
+                    <span class="error" id="mobileError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error" id="emailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="regNumber">Registration Number</label>
+                    <input type="text" id="regNumber" name="regNumber" placeholder="12ABC1234" required>
+                    <span class="error" id="regNumberError"></span>
+                    <small>Format: 2 digits, 3 letters, 4 digits (e.g., 12ABC1234)</small>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="submit-btn">Register</button>
+                    <button type="button" class="back-btn" onclick="goToLanding()">Back</button>
+                    <button type="button" class="clear-btn" onclick="clearForm()">Clear All</button>
+                </div>
+            </form>
+
+            <div id="successMessage" class="success-message">
+                Registration successful! Welcome to EduLearn.
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
