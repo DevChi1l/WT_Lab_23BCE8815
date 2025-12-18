@@ -3,166 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Dev d | Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Exercise 5: My Portfolio</h1>
-        
-        <div class="portfolio">
-            <div class="header">
-                <div class="profile">
-                    <img src="img/profile.png" alt="My Photo" class="profile-img">
-                    <h2>Dev D</h2>
-                    <p class="title">Web Developer & Designer</p>
+        <header class="header">
+            <div class="profile-section">
+                <img src="img/profile.png" alt="Dev d" class="profile-pic">
+                <div class="profile-info">
+                    <h1>Dev D</h1>
+                    <p class="title">Computer Science Student</p>
+                    <p class="location">VIT-AP University</p>
                 </div>
             </div>
-            
-            <div class="section">
-                <h3 class="section-title">About Me</h3>
-                <div class="about-content">
-                    <p>Hi! I'm Dev, a Computer Science student at VIT-AP University. I love creating websites and learning new technologies.</p>
-                    <p>I enjoy coding, playing chess, and photography. Currently learning JavaScript and React.</p>
+        </header>
+
+        <main class="main-content">
+            <section class="card">
+                <h2>About Me</h2>
+                <p>Hello! I'm Dev D, a dedicated Computer Science undergraduate at VIT-AP University with a strong passion for web development and creating impactful digital solutions. I believe in the power of code to transform ideas into functional, user-friendly applications that solve real-world problems.</p>
+                <p>My journey in technology began with curiosity about how websites work, which evolved into a deep interest in front-end development, user interface design, and creating seamless digital experiences. I'm constantly exploring new technologies and frameworks to expand my skill set.Beyond coding, I'm an active member of our university's coding club where I participate in hackathons and workshops. I also mentor junior students in web development basics, which has strengthened my communication and teaching abilities.Currently, I'm diving deeper into React.js, Node.js, and database management while working on several collaborative projects that aim to address campus-related challenges through technology.</p>
+            <section class="card">
+                <h2>My Skills</h2>
+                <div class="skills-container">
+                    <div class="skill-box">
+                        <div class="skill-icon">
+                            <img src="img/html.png" alt="HTML">
+                        </div>
+                        <h3>HTML</h3>
+                        <p>2 Years Experience</p>
+                    </div>
+                    
+                    <div class="skill-box">
+                        <div class="skill-icon">
+                            <img src="img/css.png" alt="CSS">
+                        </div>
+                        <h3>CSS</h3>
+                        <p>1.5 Years Experience</p>
+                    </div>
+                    
+                    <div class="skill-box">
+                        <div class="skill-icon">
+                            <img src="img/js.png" alt="JavaScript">
+                        </div>
+                        <h3>JavaScript</h3>
+                        <p>6 Months Experience</p>
+                    </div>
+                    
+                    <div class="skill-box">
+                        <div class="skill-icon">
+                            <img src="img/python.png" alt="Python">
+                        </div>
+                        <h3>Python</h3>
+                        <p>1 Year Experience</p>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Skills Table -->
-            <div class="section">
-                <h3 class="section-title">My Skills</h3>
-                <table class="skills-table">
-                    <tr>
-                        <th>Skill</th>
-                        <th>Level</th>
-                        <th>Experience</th>
-                    </tr>
-                    <tr>
-                        <td>HTML</td>
-                        <td>Advanced</td>
-                        <td>2 years</td>
-                    </tr>
-                    <tr>
-                        <td>CSS</td>
-                        <td>Intermediate</td>
-                        <td>1.5 years</td>
-                    </tr>
-                    <tr>
-                        <td>JavaScript</td>
-                        <td>Beginner</td>
-                        <td>6 months</td>
-                    </tr>
-                    <tr>
-                        <td>Python</td>
-                        <td>Intermediate</td>
-                        <td>1 year</td>
-                    </tr>
-                    <tr>
-                        <td>Photoshop</td>
-                        <td>Beginner</td>
-                        <td>3 months</td>
-                    </tr>
-                </table>
-            </div>
-            
-            <div class="section">
-                <h3 class="section-title">My Projects</h3>
-                <div class="projects">
-                    <div class="project">
-                        <img src="img/project1.jpg" alt="Project 1" class="project-img">
+            </section>
+
+            <section class="card">
+                <h2>My Projects</h2>
+                <div class="projects-container">
+                    <div class="project-card">
+                        <img src="img/project1.jpg" alt="College Website" class="project-image">
                         <div class="project-info">
-                            <h4>College Website</h4>
-                            <p>Created a responsive website for college events</p>
-                            <p class="tech">HTML, CSS, JavaScript</p>
+                            <h3>College Website</h3>
+                            <p>Responsive website for college events with admin panel</p>
                         </div>
                     </div>
                     
-                    <div class="project">
-                        <img src="img/project2.jpg" alt="Project 2" class="project-img">
+                    <div class="project-card">
+                        <img src="img/project2.jpg" alt="Quiz App" class="project-image">
                         <div class="project-info">
-                            <h4>Quiz App</h4>
-                            <p>Built a simple quiz application</p>
-                            <p class="tech">JavaScript, CSS</p>
+                            <h3>Quiz Application</h3>
+                            <p>Interactive quiz with score tracking and timer</p>
                         </div>
                     </div>
                     
-                    <div class="project">
-                        <img src="img/project3.png" alt="Project 3" class="project-img">
+                    <div class="project-card">
+                        <img src="img/project3.png" alt="Portfolio" class="project-image">
                         <div class="project-info">
-                            <h4>Portfolio Website</h4>
-                            <p>Designed my personal portfolio</p>
-                            <p class="tech">HTML, CSS</p>
+                            <h3>Portfolio Website</h3>
+                            <p>Personal portfolio with contact form and projects showcase</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="section">
-                <h3 class="section-title">Education</h3>
-                <div class="education">
-                    <div class="edu-item">
-                        <h4>VIT-AP University</h4>
-                        <p>B.Tech Computer Science (2022-2026)</p>
-                        <p>CGPA: 8.5/10</p>
+            </section>
+
+            <section class="card">
+                <h2>Education</h2>
+                <div class="education-container">
+                    <div class="education-item">
+                        <img src="img/vit.png" alt="VIT-AP University" class="edu-image">
+                        <div class="edu-info">
+                            <h3>VIT-AP University</h3>
+                            <p>B.Tech Computer Science</p>
+                            <p>2022-2026 | CGPA: 8.5/10</p>
+                        </div>
                     </div>
-                    <div class="edu-item">
-                        <h4>Delhi Public School</h4>
-                        <p>Class XII - Science (2020-2022)</p>
-                        <p>Percentage: 92%</p>
+                    
+                    <div class="education-item">
+                        <img src="img/dps.jpg" alt="DPS" class="edu-image">
+                        <div class="edu-info">
+                            <h3>Delhi Public School</h3>
+                            <p>Class XII - Science Stream</p>
+                            <p>2020-2022 | Percentage: 92%</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="section">
-                <h3 class="section-title">Contact Me</h3>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Your Name:</label>
-                        <input type="text" id="name" name="name" required>
+            </section>
+
+            <section class="card">
+                <h2>Contact Me</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <p>📧 dev.d@email.com</p>
+                        <p>📱 +91 98765 43210</p>
+                        <p>📍 Andhra Pradesh, India</p>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="email">Your Email:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message:</label>
-                        <textarea id="message" name="message" rows="4" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
-            </div>
-            
-            <!-- Footer -->
-            <div class="footer">
-                <div class="contact-info">
-                    <p>Email: Dev.sharma@email.com</p>
-                    <p>Phone: +91 98765 43210</p>
-                    <p>Location: Andhra Pradesh, India</p>
+                    <form class="contact-form">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" rows="3" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
                 </div>
-                <p class="copyright">© 2023 Dev Sharma | Created for Lab Exercise</p>
-            </div>
-        </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>© 2023 Dev D | Portfolio</p>
+        </footer>
     </div>
-    
+
     <script>
         document.querySelector('.contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you! Your message has been sent.');
+            alert('Message sent! I will contact you soon.');
             this.reset();
         });
-        
-        const projectImages = document.querySelectorAll('.project-img');
-        projectImages.forEach(img => {
-            img.addEventListener('mouseover', function() {
+
+        const skillBoxes = document.querySelectorAll('.skill-box');
+        skillBoxes.forEach(box => {
+            box.addEventListener('mouseenter', function() {
                 this.style.transform = 'scale(1.05)';
+                this.style.boxShadow = '0 8px 20px rgba(0,0,0,0.2)';
             });
-            img.addEventListener('mouseout', function() {
+            
+            box.addEventListener('mouseleave', function() {
                 this.style.transform = 'scale(1)';
+                this.style.boxShadow = '0 4px 10px rgba(0,0,0,0.1)';
             });
         });
     </script>
-
 </body>
 </html>
