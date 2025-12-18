@@ -11,7 +11,6 @@
         <h1>Exercise 5: My Portfolio</h1>
         
         <div class="portfolio">
-            <!-- Header -->
             <div class="header">
                 <div class="profile">
                     <img src="img/profile.png" alt="My Photo" class="profile-img">
@@ -20,7 +19,6 @@
                 </div>
             </div>
             
-            <!-- About Me -->
             <div class="section">
                 <h3 class="section-title">About Me</h3>
                 <div class="about-content">
@@ -66,7 +64,6 @@
                 </table>
             </div>
             
-            <!-- Projects -->
             <div class="section">
                 <h3 class="section-title">My Projects</h3>
                 <div class="projects">
@@ -99,7 +96,6 @@
                 </div>
             </div>
             
-            <!-- Education -->
             <div class="section">
                 <h3 class="section-title">Education</h3>
                 <div class="education">
@@ -116,7 +112,6 @@
                 </div>
             </div>
             
-            <!-- Contact Form -->
             <div class="section">
                 <h3 class="section-title">Contact Me</h3>
                 <form class="contact-form">
@@ -152,14 +147,12 @@
     </div>
     
     <script>
-        // Simple form submission
         document.querySelector('.contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Thank you! Your message has been sent.');
             this.reset();
         });
         
-        // Simple hover effect for project images
         const projectImages = document.querySelectorAll('.project-img');
         projectImages.forEach(img => {
             img.addEventListener('mouseover', function() {
@@ -170,7 +163,6 @@
             });
         });
     </script>
-    <a href="../index.html" class="back-btn">← Back to Main</a>
 
 </body>
 </html>
