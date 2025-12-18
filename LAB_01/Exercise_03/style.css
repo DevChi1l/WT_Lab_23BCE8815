@@ -18,15 +18,6 @@ h1 {
     text-align: center;
 }
 
-.back-btn {
-    display: inline-block;
-    margin-bottom: 20px;
-    padding: 8px 15px;
-    background-color: #95a5a6;
-    color: white;
-    text-decoration: none;
-    border-radius: 3px;
-}
 
 .form-group {
     margin-bottom: 20px;
@@ -66,8 +57,4 @@ button {
     cursor: pointer;
     font-size: 16px;
     width: 100%;
-}
-
-button:hover {
-    background-color: #27ae60;
 }
