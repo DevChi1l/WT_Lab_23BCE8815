@@ -112,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
         video.volume = this.value / 100;
     });
     
-    // Update video time
     video.addEventListener('timeupdate', function() {
         videoTime.textContent = formatTime(video.currentTime);
     });
