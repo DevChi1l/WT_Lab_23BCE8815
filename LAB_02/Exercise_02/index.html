@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio & Video Player</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>🎵 Multimedia Playback 🎬</h1>
+    
+    <!-- Audio Section -->
+    <div class="player-section audio-section">
+        <h2>🎧 Audio Player</h2>
+        <div class="player-container">
+            <div class="file-selector">
+                <input type="file" id="audioFile" accept="audio/*" class="file-input">
+                <label for="audioFile" class="file-label">📁 Choose Audio File</label>
+                <span id="audioFileName" class="file-name">No file selected</span>
+            </div>
+            
+            <audio id="audioPlayer"></audio>
+            
+            <div class="controls">
+                <button id="audioPlay" class="play-btn">▶️ Play</button>
+                <button id="audioPause" class="pause-btn">⏸️ Pause</button>
+                <button id="audioMute" class="mute-btn">🔊 Volume</button>
+                <input type="range" id="audioVolume" min="0" max="100" value="70" class="volume-slider">
+            </div>
+            
+            <div class="time-display">
+                <span>Time: <span id="audioTime">0:00</span> / <span id="audioDuration">0:00</span></span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Video Section -->
+    <div class="player-section video-section">
+        <h2>🎬 Video Player</h2>
+        <div class="player-container">
+            <div class="file-selector">
+                <input type="file" id="videoFile" accept="video/*" class="file-input">
+                <label for="videoFile" class="file-label">📁 Choose Video File</label>
+                <span id="videoFileName" class="file-name">No file selected</span>
+            </div>
+            
+            <video id="videoPlayer" width="400"></video>
+            
+            <div class="controls">
+                <button id="videoPlay" class="play-btn">▶️ Play</button>
+                <button id="videoPause" class="pause-btn">⏸️ Pause</button>
+                <button id="videoMute" class="mute-btn">🔊 Volume</button>
+                <input type="range" id="videoVolume" min="0" max="100" value="70" class="volume-slider">
+            </div>
+            
+            <div class="time-display">
+                <span>Time: <span id="videoTime">0:00</span> / <span id="videoDuration">0:00</span></span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
