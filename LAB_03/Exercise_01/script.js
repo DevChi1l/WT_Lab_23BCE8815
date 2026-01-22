@@ -1,0 +1,326 @@
+const validationConfig = {
+            student: {
+                emailDomains: ['edu', 'ac.uk', 'school.edu'],
+                passwordMinLength: 8,
+                passwordRequireUpper: true,
+                passwordRequireNumber: false,
+                passwordRequireSpecial: false,
+                minAge: 16,
+                maxAge: 30,
+                minSkills: 1,
+                skills: ['JavaScript', 'HTML/CSS', 'Python', 'React', 'Math', 'Science']
+            },
+            teacher: {
+                emailDomains: ['edu', 'ac.uk', 'college.edu', 'university.edu'],
+                passwordMinLength: 10,
+                passwordRequireUpper: true,
+                passwordRequireNumber: true,
+                passwordRequireSpecial: false,
+                minAge: 25,
+                maxAge: 70,
+                minSkills: 2,
+                skills: ['Teaching', 'Curriculum Design', 'JavaScript', 'Python', 'Web Dev', 'Mentoring']
+            },
+            admin: {
+                emailDomains: ['admin.edu', 'admin.ac.uk', 'university.edu'],
+                passwordMinLength: 12,
+                passwordRequireUpper: true,
+                passwordRequireNumber: true,
+                passwordRequireSpecial: true,
+                minAge: 30,
+                maxAge: 100,
+                minSkills: 3,
+                skills: ['System Admin', 'Security', 'Database', 'Team Leadership', 'Project Management']
+            }
+        };
+
+        let currentRole = '';
+        let formIsValid = false;
+        const formData = {};
+
+        const form = document.getElementById('registrationForm');
+        const roleSelect = document.getElementById('role');
+        const validationRulesDiv = document.getElementById('validationRules');
+        const rulesList = document.getElementById('rulesList');
+        const roleNameSpan = document.getElementById('roleName');
+        const skillsContainer = document.getElementById('skillsContainer');
+        const skillsList = document.getElementById('skillsList');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+        const userDataDiv = document.getElementById('userData');
+
+        function init() {
+            roleSelect.addEventListener('change', handleRoleChange);
+            
+            document.querySelectorAll('input, select').forEach(element => {
+                element.addEventListener('input', validateForm);
+                element.addEventListener('change', validateForm);
+            });
+            
+            form.addEventListener('submit', handleSubmit);
+        }
+
+        function handleRoleChange() {
+            currentRole = roleSelect.value;
+            formData.role = currentRole;
+            
+            if (!currentRole) {
+                validationRulesDiv.style.display = 'none';
+                skillsContainer.style.display = 'none';
+                return;
+            }
+            
+            validationRulesDiv.style.display = 'block';
+            roleNameSpan.textContent = currentRole.charAt(0).toUpperCase() + currentRole.slice(1);
+            displayValidationRules();
+            
+            displaySkills();
+            skillsContainer.style.display = 'block';
+            
+            validateForm();
+        }
+
+        function displayValidationRules() {
+            const rules = validationConfig[currentRole];
+            let rulesHTML = '';
+            
+            rulesHTML += `<div class="rule">✓ Email domains: ${rules.emailDomains.join(', ')}</div>`;
+            rulesHTML += `<div class="rule">✓ Password: ${rules.passwordMinLength}+ chars`;
+            if (rules.passwordRequireUpper) rulesHTML += ', uppercase';
+            if (rules.passwordRequireNumber) rulesHTML += ', number';
+            if (rules.passwordRequireSpecial) rulesHTML += ', special character';
+            rulesHTML += '</div>';
+            rulesHTML += `<div class="rule">✓ Age: ${rules.minAge}-${rules.maxAge}</div>`;
+            rulesHTML += `<div class="rule">✓ Skills: At least ${rules.minSkills} required</div>`;
+            
+            rulesList.innerHTML = rulesHTML;
+        }
+
+        function displaySkills() {
+            const skills = validationConfig[currentRole].skills;
+            skillsList.innerHTML = '';
+            formData.skills = [];
+            
+            skills.forEach(skill => {
+                const div = document.createElement('div');
+                div.innerHTML = `
+                    <input type="checkbox" id="skill_${skill}" value="${skill}" 
+                           onchange="handleSkillChange(this)">
+                    <label for="skill_${skill}">${skill}</label>
+                `;
+                skillsList.appendChild(div);
+            });
+        }
+
+        function handleSkillChange(checkbox) {
+            if (checkbox.checked) {
+                formData.skills.push(checkbox.value);
+            } else {
+                const index = formData.skills.indexOf(checkbox.value);
+                if (index > -1) formData.skills.splice(index, 1);
+            }
+            validateForm();
+        }
+
+        function validateName() {
+            const name = document.getElementById('name').value.trim();
+            formData.name = name;
+            const error = document.getElementById('nameError');
+            
+            if (name.length < 2) {
+                showError('name', error, 'Name must be at least 2 characters');
+                return false;
+            }
+            clearError('name', error);
+            return true;
+        }
+
+        function validateEmail() {
+            const email = document.getElementById('email').value.trim();
+            formData.email = email;
+            const error = document.getElementById('emailError');
+            
+            if (!currentRole) {
+                showError('email', error, 'Select a role first');
+                return false;
+            }
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showError('email', error, 'Invalid email format');
+                return false;
+            }
+            
+            const allowedDomains = validationConfig[currentRole].emailDomains;
+            const domain = email.split('.').pop();
+            const isValidDomain = allowedDomains.some(allowed => email.endsWith('.' + allowed));
+            
+            if (!isValidDomain) {
+                showError('email', error, `Email must end with: ${allowedDomains.map(d => '.' + d).join(', ')}`);
+                return false;
+            }
+            
+            clearError('email', error);
+            return true;
+        }
+
+        function validatePassword() {
+            const password = document.getElementById('password').value;
+            formData.password = password;
+            const rules = validationConfig[currentRole];
+            const error = document.getElementById('passwordError');
+            
+            let errors = [];
+            
+            if (password.length < rules.passwordMinLength) {
+                errors.push(`At least ${rules.passwordMinLength} characters`);
+            }
+            
+            if (rules.passwordRequireUpper && !/[A-Z]/.test(password)) {
+                errors.push('At least one uppercase letter');
+            }
+            
+            if (rules.passwordRequireNumber && !/\d/.test(password)) {
+                errors.push('At least one number');
+            }
+            
+            if (rules.passwordRequireSpecial && !/[!@#$%^&*]/.test(password)) {
+                errors.push('At least one special character (!@#$%^&*)');
+            }
+            
+            if (errors.length > 0) {
+                showError('password', error, 'Password must have: ' + errors.join(', '));
+                return false;
+            }
+            
+            clearError('password', error);
+            return true;
+        }
+
+        function validateConfirmPassword() {
+            const confirm = document.getElementById('confirmPassword').value;
+            const password = document.getElementById('password').value;
+            const error = document.getElementById('confirmPasswordError');
+            
+            if (confirm !== password) {
+                showError('confirmPassword', error, 'Passwords do not match');
+                return false;
+            }
+            
+            clearError('confirmPassword', error);
+            return true;
+        }
+
+        function validateAge() {
+            const age = parseInt(document.getElementById('age').value);
+            formData.age = age;
+            const error = document.getElementById('ageError');
+            
+            if (!currentRole) {
+                showError('age', error, 'Select a role first');
+                return false;
+            }
+            
+            const rules = validationConfig[currentRole];
+            
+            if (isNaN(age) || age < rules.minAge || age > rules.maxAge) {
+                showError('age', error, `Age must be between ${rules.minAge} and ${rules.maxAge}`);
+                return false;
+            }
+            
+            clearError('age', error);
+            return true;
+        }
+
+        function validateSkills() {
+            const error = document.getElementById('skillsError');
+            const rules = validationConfig[currentRole];
+            
+            if (!currentRole || formData.skills.length < rules.minSkills) {
+                showError('skillsContainer', error, `Select at least ${rules.minSkills} skill(s)`);
+                return false;
+            }
+            
+            clearError('skillsContainer', error);
+            return true;
+        }
+
+        function validateRole() {
+            const error = document.getElementById('roleError');
+            if (!currentRole) {
+                showError('role', error, 'Please select a role');
+                return false;
+            }
+            clearError('role', error);
+            return true;
+        }
+
+        function validateForm() {
+            const validations = [
+                validateName(),
+                validateRole(),
+                validateEmail(),
+                validatePassword(),
+                validateConfirmPassword(),
+                validateAge(),
+                currentRole ? validateSkills() : true
+            ];
+            
+            formIsValid = validations.every(result => result === true);
+            
+            submitBtn.disabled = !formIsValid;
+            
+            return formIsValid;
+        }
+
+        function showError(fieldId, errorElement, message) {
+            const field = document.getElementById(fieldId);
+            if (field) {
+                field.classList.remove('valid');
+                field.classList.add('invalid');
+            }
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        function clearError(fieldId, errorElement) {
+            const field = document.getElementById(fieldId);
+            if (field) {
+                field.classList.remove('invalid');
+                field.classList.add('valid');
+            }
+            errorElement.style.display = 'none';
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            if (!validateForm()) {
+                alert('Please fix all errors before submitting');
+                return;
+            }
+            
+            form.style.display = 'none';
+            successMessage.style.display = 'block';
+            
+            userDataDiv.innerHTML = `
+                <h4>Registration Details:</h4>
+                <p><strong>Name:</strong> ${formData.name}</p>
+                <p><strong>Email:</strong> ${formData.email}</p>
+                <p><strong>Role:</strong> ${currentRole.charAt(0).toUpperCase() + currentRole.slice(1)}</p>
+                <p><strong>Age:</strong> ${formData.age}</p>
+                <p><strong>Skills:</strong> ${formData.skills.join(', ')}</p>
+                <p><strong>Password Strength:</strong> ${getPasswordStrength(formData.password)}</p>
+            `;
+            
+            console.log('Form submitted with data:', formData);
+        }
+
+        function getPasswordStrength(password) {
+            if (password.length >= 12 && /[A-Z]/.test(password) && /\d/.test(password) && /[!@#$%^&*]/.test(password)) {
+                return 'Strong';
+            } else if (password.length >= 10 && /[A-Z]/.test(password) && /\d/.test(password)) {
+                return 'Medium';
+            }
+            return 'Weak';
+        }
