@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Multi-Step Form</h2>
+    
+    <div style="margin:20px 0;">
+        <div style="display:flex; justify-content:space-between;">
+            <div>1. Personal</div>
+            <div>2. Contact</div>
+            <div>3. Account</div>
+            <div>4. Review</div>
+        </div>
+        <div style="height:5px;background:#ddd;margin-top:10px;">
+            <div id="progressBar" style="width:25%;height:5px;background:blue;"></div>
+        </div>
+    </div>
+    
+    <div id="stage1">
+        <h3>Personal Info</h3>
+        <div><input type="text" placeholder="Full Name" id="name"></div>
+        <div style="color:red;font-size:12px;display:none;" id="nameError">Name must be 3+ letters</div>
+        
+        <div><input type="number" placeholder="Age" id="age"></div>
+        <div style="color:red;font-size:12px;display:none;" id="ageError">Must be 18-65</div>
+        
+        <button onclick="validateStage1()">Next →</button>
+    </div>
+    
+    <div id="stage2" style="display:none;">
+        <h3>Contact Info</h3>
+        <div><input type="email" placeholder="Email" id="email"></div>
+        <div style="color:red;font-size:12px;display:none;" id="emailError">Valid email required</div>
+        
+        <div><input type="tel" placeholder="Phone" id="phone"></div>
+        <div style="color:red;font-size:12px;display:none;" id="phoneError">10 digits only</div>
+        
+        <button onclick="prevStage()">← Back</button>
+        <button onclick="validateStage2()">Next →</button>
+    </div>
+    
+    <div id="stage3" style="display:none;">
+        <h3>Account Info</h3>
+        <div><input type="text" placeholder="Username" id="username"></div>
+        <div style="color:red;font-size:12px;display:none;" id="userError">4+ characters, no spaces</div>
+        
+        <div><input type="password" placeholder="Password" id="password"></div>
+        <div style="color:red;font-size:12px;display:none;" id="passError">6+ characters</div>
+        
+        <div><input type="password" placeholder="Confirm Password" id="confirmPass"></div>
+        <div style="color:red;font-size:12px;display:none;" id="confirmError">Passwords must match</div>
+        
+        <button onclick="prevStage()">← Back</button>
+        <button onclick="validateStage3()">Next →</button>
+    </div>
+    
+    <div id="stage4" style="display:none;">
+        <h3>Review & Submit</h3>
+        <div style="background:#f5f5f5;padding:15px;" id="reviewData"></div>
+        <button onclick="prevStage()">← Back</button>
+        <button onclick="submitForm()">Submit</button>
+    </div>
+    
+    <div id="success" style="display:none;background:#e8f4f8;padding:20px;margin-top:20px;">
+        <h3>✅ Success! Form Submitted</h3>
+        <div id="finalData"></div>
+    </div>
+
+<script>
+let currentStage = 1;
+let formData = {};
+
+function validateStage1() {
+    const name = document.getElementById('name').value.trim();
+    const age = parseInt(document.getElementById('age').value);
+    let valid = true;
+    
+    if (name.length < 3 || !/^[A-Za-z ]+$/.test(name)) {
+        document.getElementById('nameError').style.display = 'block';
+        valid = false;
+    } else {
+        document.getElementById('nameError').style.display = 'none';
+        formData.name = name;
+    }
+    
+    if (isNaN(age) || age < 18 || age > 65) {
+        document.getElementById('ageError').style.display = 'block';
+        valid = false;
+    } else {
+        document.getElementById('ageError').style.display = 'none';
+        formData.age = age;
+    }
+    
+    if (valid) nextStage(2);
+}
+
+function validateStage2() {
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.replace(/\D/g, '');
+    let valid = true;
+    
+    if (!email.includes('@') || !email.includes('.') || email.length < 5) {
+        document.getElementById('emailError').style.display = 'block';
+        valid = false;
+    } else {
+        document.getElementById('emailError').style.display = 'none';
+        formData.email = email;
+    }
+    
+    if (phone.length !== 10 || !/^\d+$/.test(phone)) {
+        document.getElementById('phoneError').style.display = 'block';
+        valid = false;
+    } else {
+        document.getElementById('phoneError').style.display = 'none';
+        formData.phone = phone;
+    }
+    
+    if (valid) nextStage(3);
+}
+
+function validateStage3() {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value;
+    const confirmPass = document.getElementById('confirmPass').value;
+    let valid = true;
+    
+    if (username.length < 4 || /\s/.test(username)) {
+        document.getElementById('userError').style.display = 'block';
+        valid = false;
+    } else {
+        document.getElementById('userError').style.display = 'none';
+        formData.username = username;
+    }
+    
+    if (password.length < 6) {
+        document.getElementById('passError').style.display = 'block';
+        valid = false;
+    } else {
+        document.getElementById('passError').style.display = 'none';
+        formData.password = password;
+    }
+    
+    if (password !== confirmPass) {
+        document.getElementById('confirmError').style.display = 'block';
+        valid = false;
+    } else {
+        document.getElementById('confirmError').style.display = 'none';
+    }
+    
+    if (valid) {
+        showReview();
+        nextStage(4);
+    }
+}
+
+function showReview() {
+    document.getElementById('reviewData').innerHTML = `
+        <p><b>Name:</b> ${formData.name}</p>
+        <p><b>Age:</b> ${formData.age}</p>
+        <p><b>Email:</b> ${formData.email}</p>
+        <p><b>Phone:</b> ${formData.phone}</p>
+        <p><b>Username:</b> ${formData.username}</p>
+    `;
+}
+
+function nextStage(stageNum) {
+    document.getElementById('stage1').style.display = 'none';
+    document.getElementById('stage2').style.display = 'none';
+    document.getElementById('stage3').style.display = 'none';
+    document.getElementById('stage4').style.display = 'none';
+    document.getElementById(`stage${stageNum}`).style.display = 'block';
+    currentStage = stageNum;
+    
+    document.getElementById('progressBar').style.width = (stageNum * 25) + '%';
+}
+
+function prevStage() {
+    if (currentStage > 1) {
+        nextStage(currentStage - 1);
+    }
+}
+
+function submitForm() {
+    document.getElementById('stage4').style.display = 'none';
+    document.getElementById('success').style.display = 'block';
+    
+    let html = '';
+    for (let key in formData) {
+        if (key !== 'password') {
+            html += `<p><b>${key}:</b> ${formData[key]}</p>`;
+        }
+    }
+    document.getElementById('finalData').innerHTML = html;
+}
+</script>
+</body>
+</html>
