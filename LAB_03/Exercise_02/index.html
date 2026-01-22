@@ -33,6 +33,7 @@
             
             <div>
                 <h3>Apply Coupon</h3>
+                <p>10% off with code <strong>SAVE10</strong> (min 5 chars, must include "SAVE")</p>
                 <input type="text" id="couponCode" placeholder="Enter coupon code">
                 <button onclick="applyCoupon()">Apply</button>
                 <div id="couponMessage"></div>
@@ -194,7 +195,7 @@
             if (code.length < 5) {
                 messageDiv.textContent = "Coupon code must be at least 5 characters";
                 messageDiv.className = 'error';
-                return;
+                return; 
             }
             
             if (!code.includes("SAVE")) {
