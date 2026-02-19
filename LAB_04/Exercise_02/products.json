@@ -1,0 +1,54 @@
+{
+    "products": [
+        {
+            "name": "Laptop",
+            "price": 999,
+            "category": "Electronics"
+        },
+        {
+            "name": "Mouse",
+            "price": 25,
+            "category": "Electronics"
+        },
+        {
+            "name": "Keyboard",
+            "price": 45,
+            "category": "Electronics"
+        },
+        {
+            "name": "Book - JavaScript",
+            "price": 35,
+            "category": "Books"
+        },
+        {
+            "name": "Book - HTML/CSS",
+            "price": 30,
+            "category": "Books"
+        },
+        {
+            "name": "Headphones",
+            "price": 80,
+            "category": "Electronics"
+        },
+        {
+            "name": "Coffee Mug",
+            "price": 15,
+            "category": "Kitchen"
+        },
+        {
+            "name": "Backpack",
+            "price": 50,
+            "category": "Accessories"
+        },
+        {
+            "name": "Water Bottle",
+            "price": 12,
+            "category": "Sports"
+        },
+        {
+            "name": "Notebook",
+            "price": 5,
+            "category": "Stationery"
+        }
+    ]
+}
