@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Inventory</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Product Inventory System</h2>
+        
+        <div>
+            <h3>Add/Edit Product</h3>
+            <form id="productForm">
+                <input type="hidden" id="editIndex" value="-1">
+                <input type="text" id="productId" placeholder="Product ID" required>
+                <input type="text" id="productName" placeholder="Product Name" required>
+                <input type="text" id="productCategory" placeholder="Category" required>
+                <input type="number" id="productPrice" placeholder="Price" min="0" step="0.01" required>
+                <input type="number" id="productStock" placeholder="Stock Quantity" min="0" required>
+                <button type="submit" id="submitBtn">Add Product</button>
+                <button type="button" id="cancelBtn">Cancel</button>
+            </form>
+        </div>
+        
+        <div>
+            <h3>Search by Category</h3>
+            <input type="text" id="searchCategory" placeholder="Enter category (e.g., Electronics)">
+            <button id="searchBtn">Search</button>
+            <button id="resetBtn">Show All</button>
+        </div>
+        
+        <div id="message"></div>
+        
+        <div>
+            <h3>Inventory List</h3>
+            <table border="1" id="inventoryTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price ($)</th>
+                        <th>Stock</th>
+                        <th>Total Value</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="inventoryTableBody">
+                    <tr><td colspan="7">Loading inventory...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

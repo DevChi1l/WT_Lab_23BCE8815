@@ -1,0 +1,32 @@
+{
+    "products": [
+        {
+            "id": "P001",
+            "name": "Laptop",
+            "category": "Electronics",
+            "price": 999,
+            "stock": 15
+        },
+        {
+            "id": "P002",
+            "name": "Mouse",
+            "category": "Electronics",
+            "price": 25,
+            "stock": 50
+        },
+        {
+            "id": "P003",
+            "name": "Notebook",
+            "category": "Stationery",
+            "price": 5,
+            "stock": 100
+        },
+        {
+            "id": "P004",
+            "name": "Desk Chair",
+            "category": "Furniture",
+            "price": 199,
+            "stock": 8
+        }
+    ]
+}
