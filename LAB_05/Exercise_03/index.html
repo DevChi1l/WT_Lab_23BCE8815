@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Record System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Student Record System</h2>
+        
+        <div>
+            <h3>Add/Update Student</h3>
+            <form id="studentForm">
+                <input type="hidden" id="editIndex" value="-1">
+                <input type="text" id="studentId" placeholder="Student ID" required>
+                <input type="text" id="studentName" placeholder="Full Name" required>
+                <input type="text" id="studentCourse" placeholder="Course" required>
+                <input type="number" id="studentMarks" placeholder="Marks (0-100)" min="0" max="100" required>
+                <button type="submit" id="submitBtn">Add Student</button>
+                <button type="button" id="cancelBtn">Cancel</button>
+            </form>
+        </div>
+        
+        <div id="message"></div>
+        
+        <div>
+            <h3>Students List</h3>
+            <table border="1" id="studentsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Marks</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="studentsTableBody">
+                    <tr><td colspan="5">Loading students...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
