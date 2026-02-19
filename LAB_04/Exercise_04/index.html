@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Dashboard</h1>
+        
+        <div class="search-container">
+            <input type="text" id="cityInput" placeholder="Enter city name (e.g., London)">
+            <button id="searchBtn">Get Weather</button>
+            <div class="loader" id="loader"></div>
+        </div>
+        
+        <div id="error"></div>
+        
+        <div class="weather-card" id="weatherCard">
+            <div class="weather-header">
+                <h2 id="cityName">-</h2>
+                <div class="weather-icon" id="weatherIcon">☀️</div>
+            </div>
+            
+            <div class="weather-info">
+                <div class="weather-item">
+                    <span class="label">Temperature:</span>
+                    <span class="value" id="temperature">-- °C</span>
+                </div>
+                <div class="weather-item">
+                    <span class="label">Humidity:</span>
+                    <span class="value" id="humidity">-- %</span>
+                </div>
+                <div class="weather-item">
+                    <span class="label">Condition:</span>
+                    <span class="value" id="condition">--</span>
+                </div>
+                <div class="weather-item">
+                    <span class="label">Feels Like:</span>
+                    <span class="value" id="feelsLike">-- °C</span>
+                </div>
+                <div class="weather-item">
+                    <span class="label">Wind Speed:</span>
+                    <span class="value" id="windSpeed">-- km/h</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-text">Using sample weather data (OpenWeather API simulation)</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
