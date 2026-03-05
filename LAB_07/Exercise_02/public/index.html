@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Book Finder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Online Book Finder</h1>
+        
+        <div class="status-bar">
+            MongoDB Connected • Bookstore DB
+        </div>
+        
+        <div class="search-section">
+            <h2>Search Books</h2>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search by title...">
+                <button onclick="searchBooks()">Search</button>
+            </div>
+        </div>
+        
+        <div class="filters-section">
+            <h2>Browse Books</h2>
+            <div class="filter-controls">
+                <select id="categoryFilter">
+                    <option value="">All Categories</option>
+                </select>
+                
+                <select id="sortFilter">
+                    <option value="">Sort By</option>
+                    <option value="price">Price: Low to High</option>
+                    <option value="rating">Rating: High to Low</option>
+                </select>
+                
+                <button onclick="loadTopRated()">Top Rated (5 Stars)</button>
+                <button onclick="loadBooks()">Show All</button>
+            </div>
+        </div>
+        
+        <div class="books-section">
+            <div id="booksContainer">
+                <div class="loading">Loading books...</div>
+            </div>
+            
+            <div id="pagination" class="pagination"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
