@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notes App with MongoDB</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📚 My Study Notes</h1>
+        
+        <!-- Status -->
+        <div class="status-box">
+            MongoDB Connected • student_notes_db
+        </div>
+        
+        <!-- Add Note Card -->
+        <div class="add-card">
+            <h2>Add New Note</h2>
+            
+            <!-- JSON Preview -->
+            <div class="json-preview">
+                <small> JSON being sent to MongoDB:</small>
+                <pre id="jsonPreview">{
+  "title": "MongoDB Basics",
+  "subject": "Database",
+  "description": "Learning MongoDB..."
+}</pre>
+            </div>
+            
+            <input type="text" id="title" placeholder="Title (e.g. MongoDB Basics)" onkeyup="updateJsonPreview()">
+            <input type="text" id="subject" placeholder="Subject (e.g. Database)" onkeyup="updateJsonPreview()">
+            <textarea id="desc" placeholder="Description" rows="3" onkeyup="updateJsonPreview()"></textarea>
+            
+            <button class="btn btn-primary" onclick="addNote()"> Save to MongoDB</button>
+        </div>
+        
+        <div class="notes-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2> My Notes</h2>
+                <button class="btn" onclick="loadNotes()"> Refresh</button>
+            </div>
+            
+            <div id="notesList">
+                <div class="loading">Loading notes from MongoDB</div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <h3>✏️ Edit Note</h3>
+            <input type="text" id="editTitle" placeholder="Title">
+            <textarea id="editDesc" placeholder="Description" rows="3"></textarea>
+            <div style="margin-top: 20px;">
+                <button class="btn btn-primary" onclick="updateNote()"> Save Changes</button>
+                <button class="btn" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
