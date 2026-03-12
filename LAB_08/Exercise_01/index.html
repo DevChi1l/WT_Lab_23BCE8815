@@ -3,28 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marks Overview</title>
+  <title>Student Marks Calculator</title>
   <style>
     :root {
-      --hue: 258;
-      --primary: hsl(var(--hue), 80%, 65%);
-      --primary-dark: hsl(var(--hue), 85%, 45%);
-      --surface: hsl(var(--hue), 30%, 98%);
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --bg: #f8fafc;
       --card: white;
-      --text: hsl(220, 40%, 15%);
-      --text-muted: hsl(220, 20%, 50%);
-      --glow: 0 8px 30px hsla(var(--hue), 70%, 60%, 0.18);
+      --text: #1e293b;
+      --muted: #64748b;
+      --success: #10b981;
+      --shadow: 0 10px 30px rgba(99, 102, 241, 0.12);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
     body {
       font-family: system-ui, sans-serif;
-      background: linear-gradient(135deg, var(--surface) 0%, hsl(var(--hue), 25%, 92%) 100%);
+      background: var(--bg);
       color: var(--text);
       min-height: 100vh;
       display: grid;
@@ -32,80 +28,112 @@
       padding: 2rem 1rem;
     }
 
-    .card {
+    .calculator {
       background: var(--card);
       border-radius: 1.5rem;
-      box-shadow: var(--glow), 0 1px 3px rgba(0,0,0,0.08);
-      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow);
+      padding: 2.5rem 2.2rem;
       width: 100%;
-      max-width: 460px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(45deg, transparent, hsla(var(--hue), 80%, 70%, 0.07), transparent);
-      pointer-events: none;
+      max-width: 520px;
     }
 
     h1 {
-      font-size: 1.6rem;
+      font-size: 1.9rem;
       font-weight: 700;
       color: var(--primary-dark);
       text-align: center;
       margin-bottom: 2rem;
-      letter-spacing: -0.02em;
     }
 
-    .stats {
-      display: grid;
-      gap: 1.4rem;
-      font-size: 1.15rem;
+    .form-group {
+      margin-bottom: 1.3rem;
     }
 
-    .stat {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: 0.9rem 1.1rem;
-      background: hsla(var(--hue), 40%, 95%, 0.6);
-      border-radius: 0.9rem;
-      transition: all 0.2s ease;
-    }
-
-    .stat:hover {
-      background: hsla(var(--hue), 50%, 92%, 0.8);
-      transform: translateY(-2px);
-    }
-
-    .stat-label {
-      color: var(--text-muted);
+    label {
+      display: block;
       font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--muted);
     }
 
-    .stat-value {
+    input {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      border-radius: 0.8rem;
+      border: 1px solid #e2e8f0;
+      font-size: 1.05rem;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    }
+
+    button {
+      width: 100%;
+      padding: 1rem;
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 0.9rem;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      transition: all 0.2s;
+    }
+
+    button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    #result {
+      margin-top: 2rem;
+      padding: 1.4rem;
+      border-radius: 1rem;
+      background: #f0f4ff;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      min-height: 6rem;
+      white-space: pre-line;
+    }
+
+    .highlight {
       font-weight: 700;
       color: var(--primary-dark);
-      font-size: 1.25rem;
-    }
-
-    .average .stat-value {
-      font-size: 1.6rem;
-      background: linear-gradient(90deg, var(--primary), hsl(var(--hue), 90%, 55%));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <h1>Performance Summary</h1>
-    <div class="stats" id="stats"></div>
+  <div class="calculator">
+    <h1>Student Marks Calculator</h1>
+
+    <div class="form-group">
+      <label for="studentName">Student Name</label>
+      <input type="text" id="studentName" placeholder="e.g. Arun" value="Arun">
+    </div>
+
+    <div class="form-group">
+      <label for="mark1">Mark 1</label>
+      <input type="number" id="mark1" min="0" max="100" placeholder="e.g. 85" value="85">
+    </div>
+
+    <div class="form-group">
+      <label for="mark2">Mark 2</label>
+      <input type="number" id="mark2" min="0" max="100" placeholder="e.g. 90" value="90">
+    </div>
+
+    <div class="form-group">
+      <label for="mark3">Mark 3</label>
+      <input type="number" id="mark3" min="0" max="100" placeholder="e.g. 88" value="88">
+    </div>
+
+    <button id="calculateBtn">Calculate Total & Average</button>
+
+    <div id="result">Enter marks and click the button above</div>
   </div>
 
   <script src="script.js"></script>
