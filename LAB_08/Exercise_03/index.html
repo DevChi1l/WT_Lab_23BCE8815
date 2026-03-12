@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Enrollment System</title>
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --success: #10b981;
+      --danger: #ef4444;
+      --bg: #f8fafc;
+      --card: white;
+      --text: #1e293b;
+      --muted: #64748b;
+      --shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2rem 1rem;
+    }
+
+    .enroll-form {
+      background: var(--card);
+      border-radius: 1.5rem;
+      box-shadow: var(--shadow);
+      padding: 2.5rem 2.2rem;
+      width: 100%;
+      max-width: 520px;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.4rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--muted);
+    }
+
+    input, button {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      border-radius: 0.8rem;
+      border: 1px solid #e2e8f0;
+      font-size: 1.05rem;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    }
+
+    button {
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    #result {
+      margin-top: 2rem;
+      padding: 1.3rem;
+      border-radius: 1rem;
+      font-size: 1.15rem;
+      font-weight: 600;
+      text-align: center;
+      min-height: 3.5rem;
+      transition: all 0.3s;
+    }
+
+    .success { background: var(--success); color: white; }
+    .error   { background: var(--danger);   color: white; }
+    .info    { background: #e0f2fe; color: #1e40af; }
+  </style>
+</head>
+<body>
+
+  <div class="enroll-form">
+    <h1>Course Enrollment</h1>
+
+    <div class="form-group">
+      <label for="courseName">Course Name</label>
+      <input type="text" id="courseName" placeholder="e.g. Web Technologies" value="Web Technologies">
+    </div>
+
+    <div class="form-group">
+      <label for="instructor">Instructor Name</label>
+      <input type="text" id="instructor" placeholder="e.g. Dr. Kumar" value="Dr. Kumar">
+    </div>
+
+    <div class="form-group">
+      <label for="seats">Available Seats</label>
+      <input type="number" id="seats" min="0" max="100" value="5" placeholder="Number of seats left">
+    </div>
+
+    <button id="enrollBtn">Enroll Now</button>
+
+    <div id="result" class="info">Fill details and click "Enroll Now"</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
