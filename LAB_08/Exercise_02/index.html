@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Profile</title>
+  <style>
+    :root {
+      --hue: 230;
+      --primary: hsl(var(--hue), 80%, 62%);
+      --primary-dark: hsl(var(--hue), 85%, 42%);
+      --bg: hsl(var(--hue), 25%, 97%);
+      --card: white;
+      --text: hsl(220, 35%, 12%);
+      --muted: hsl(220, 20%, 55%);
+      --success: #10b981;
+      --glow: 0 12px 40px hsla(var(--hue), 70%, 60%, 0.15);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2rem 1rem;
+    }
+
+    .profile-card {
+      background: var(--card);
+      border-radius: 1.5rem;
+      box-shadow: var(--glow);
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 480px;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .info-grid {
+      display: grid;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .field {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 1.2rem;
+      background: hsla(var(--hue), 40%, 96%, 0.7);
+      border-radius: 0.9rem;
+      font-size: 1.1rem;
+    }
+
+    .label { color: var(--muted); font-weight: 500; }
+    .value { font-weight: 650; color: var(--primary-dark); }
+
+    .grade-badge {
+      display: inline-block;
+      padding: 0.6rem 1.3rem;
+      background: linear-gradient(90deg, var(--success), hsl(160, 85%, 50%));
+      color: white;
+      font-weight: 700;
+      font-size: 1.3rem;
+      border-radius: 2rem;
+      margin: 1.5rem auto 0;
+      box-shadow: 0 4px 20px hsla(160, 70%, 45%, 0.35);
+    }
+
+    .console-hint {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="profile-card">
+    <h1>Student Profile</h1>
+    <div class="info-grid" id="info"></div>
+    <div class="grade-badge" id="grade"></div>
+    <div class="console-hint">Check console for raw object output</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
