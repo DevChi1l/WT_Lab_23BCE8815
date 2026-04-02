@@ -22,7 +22,7 @@ function App() {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h1 style={styles.heading}>Exercise 3 - Counter App</h1>
+        <h1 style={styles.heading}>Counter App</h1>
         <p style={styles.subheading}>Using useState Hook</p>
 
         {/* Display Counter Value */}
