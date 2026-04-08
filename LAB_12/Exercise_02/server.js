@@ -28,6 +28,8 @@ const authMiddleware = (req, res, next) => {
     const token = req.headers['authorization'];
     console.log(`[Auth] Checking authorization...`);
 
+    
+
     if (!token || token !== 'Bearer secret123') {
         console.log('[Auth] Authorization failed');
         return res.status(401).json({ error: 'Unauthorized - Invalid or missing token' });

@@ -21,6 +21,8 @@ app.get('/api/products/:id', (req, res) => {
     const id = parseInt(req.params.id);
     console.log(`GET /api/products/${id} - Fetching product`);
 
+
+    
     const product = products.find(p => p.id === id);
     if (!product) {
         return res.status(404).json({ error: 'Product not found' });
