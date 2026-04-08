@@ -20,6 +20,7 @@ emitter.on('calculate', (a, b, operation) => {
             break;
         case 'subtract':
             result = a - b;
+            
             break;
         case 'multiply':
             result = a * b;

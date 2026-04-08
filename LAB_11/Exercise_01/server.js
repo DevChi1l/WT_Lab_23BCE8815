@@ -18,6 +18,7 @@ const server = http.createServer((req, res) => {
         res.write('<p>Try visiting <a href="/about">/about</a> or <a href="/contact">/contact</a></p>');
         res.write('</body>');
         res.write('</html>');
+        
         res.end();
 
     } else if (req.url === '/about' && req.method === 'GET') {
