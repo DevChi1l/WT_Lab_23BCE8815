@@ -1,0 +1,12 @@
+{
+  "name": "lab12-exercise01-rest-api",
+  "version": "1.0.0",
+  "description": "RESTful API for managing products using Express.js",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
